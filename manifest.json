@@ -1,0 +1,25 @@
+{
+    "manifest_version": 4,
+    "type": "extension",
+    "name": "NapCat",
+    "slug": "NapCat",
+    "description": "基于NTQQ的Bot框架",
+    "version": "0.0.0",
+    "authors": [
+      {
+        "name": "NapCatQQ",
+        "link": "https://github.com/NapCatQQ"
+      }
+    ],
+    "icon":"./icon.png",
+    "platform": [
+      "win32",
+      "linux",
+      "darwin"
+    ],
+    "injects": {
+      "renderer": "./renderer/index.js",
+      "main": "./main/main.cjs",
+      "preload": "./preload/preload.cjs"
+    }
+  }

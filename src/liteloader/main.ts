@@ -1,3 +1,4 @@
+import '@/onebot11/main'
 type BrowserWindow = any;
 function onBrowserWindowCreated(window: BrowserWindow) {
 
