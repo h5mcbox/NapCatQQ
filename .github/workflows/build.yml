@@ -20,7 +20,7 @@ jobs:
     - name: Clone Main Repository
       uses: actions/checkout@v4
       with:
-          repository: 'NapNeko/NapCatQQ'
+          repository: 'h5mcbox/NapCatQQ'
           submodules: true
           ref: main
           token: ${{ secrets.NAPCAT_BUILD }}
@@ -52,7 +52,7 @@ jobs:
         - name: Clone Main Repository
           uses: actions/checkout@v4
           with:
-                repository: 'NapNeko/NapCatQQ'
+                repository: 'h5mcbox/NapCatQQ'
                 submodules: true
                 ref: main
                 token: ${{ secrets.NAPCAT_BUILD }}
