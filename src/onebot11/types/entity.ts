@@ -49,7 +49,8 @@ export interface OB11Group {
   group_id: number
   group_name: string
   member_count?: number
-  max_member_count?: number
+  max_member_count?: number,
+  shut_up_timestamp: number
 }
 
 export interface OB11Sender {
