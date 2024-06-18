@@ -23,6 +23,7 @@ export enum ActionName {
     GetFriendsWithCategory = 'get_friends_with_category',
     GetGroupIgnoreAddRequest = 'get_group_ignore_add_request',
     SetQQAvatar = 'set_qq_avatar',
+    SetGender = 'set_qq_gender',
     GetConfig = 'get_config',
     SetConfig = 'set_config',
     Debug = 'debug',
