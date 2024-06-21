@@ -19,7 +19,7 @@ import { OB11Config, ob11Config } from '@/onebot11/config';
 import { httpHeart, ob11HTTPServer } from '@/onebot11/server/http';
 import { ob11WebsocketServer } from '@/onebot11/server/ws/WebsocketServer';
 import { ob11ReverseWebsockets } from '@/onebot11/server/ws/ReverseWebsocket';
-import { getGroup, getGroupMember, groupNotifies, selfInfo, tempGroupCodeMap } from '@/core/data';
+import { getGroupMember, groupNotifies, selfInfo, tempGroupCodeMap } from '@/core/data';
 import { dbUtil } from '@/common/utils/db';
 import { BuddyListener, GroupListener, NodeIKernelBuddyListener } from '@/core/listeners';
 import { OB11FriendRequestEvent } from '@/onebot11/event/request/OB11FriendRequest';
@@ -37,7 +37,7 @@ import { Data as SysData } from '@/proto/SysMessage';
 import { Data as DeviceData } from '@/proto/SysMessage.DeviceChange';
 import { OB11FriendPokeEvent, OB11GroupPokeEvent } from './event/notice/OB11PokeEvent';
 import { isEqual } from '@/common/utils/helper';
-import { MiniAppUtil } from '@/common/utils/Packet'
+import { MiniAppUtil } from '@/common/utils/Packet';
 import { RequestUtil } from '@/common/utils/request';
 
 //下面几个其实应该移进Core-Data 缓存实现 但是现在在这里方便
@@ -433,7 +433,7 @@ export class NapCatOnebot11 {
             // member1.role = notify.type == GroupNotifyTypes.ADMIN_SET ? GroupMemberRole.admin : GroupMemberRole.normal;
             postOB11Event(groupAdminNoticeEvent, true);
           } else {
-            logDebug('获取群通知的成员信息失败', notify, getGroup(notify.group.groupCode));
+            logDebug('获取群通知的成员信息失败', notify, (notify.group.groupCode));
           }
         } else if (notify.type == GroupNotifyTypes.MEMBER_EXIT || notify.type == GroupNotifyTypes.KICK_MEMBER) {
           logDebug('有成员退出通知', notify);
@@ -475,7 +475,7 @@ export class NapCatOnebot11 {
           logDebug('收到邀请我加群通知');
           const groupInviteEvent = new OB11GroupRequestEvent();
           groupInviteEvent.group_id = parseInt(notify.group.groupCode);
-          let user_id = (await NTQQUserApi.getUinByUid(notify.user2.uid)) || '';
+          const user_id = (await NTQQUserApi.getUinByUid(notify.user2.uid)) || '';
           groupInviteEvent.user_id = parseInt(user_id);
           groupInviteEvent.sub_type = 'invite';
           groupInviteEvent.flag = flag;
@@ -531,7 +531,7 @@ export class NapCatOnebot11 {
       } catch (e) {
         logDebug('获取加好友者QQ号失败', e);
       }
-      friendRequestEvent.flag = req.friendUid + "|" + req.reqTime;
+      friendRequestEvent.flag = req.friendUid + '|' + req.reqTime;
       friendRequestEvent.comment = req.extWords;
       postOB11Event(friendRequestEvent);
     }
@@ -577,5 +577,6 @@ export class NapCatOnebot11 {
 //   console.log(ret);
 // }, 20000);
 // setTimeout(async () => {
-//   await SignMusicWrapper('429450678');
+//   let t =await SignMusicWrapper('429450678');
+//   console.log(t)
 // }, 15000)
