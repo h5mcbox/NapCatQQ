@@ -157,7 +157,6 @@ export class RequestUtil {
           });
 
           res.on('end', () => {
-
             try {
               if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
                 const responseJson = JSON.parse(responseBody) as retType;
