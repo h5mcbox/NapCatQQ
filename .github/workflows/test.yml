@@ -1,15 +1,11 @@
-name: "Build Action"
+name: "Build Test"
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 permissions: write-all
 
 jobs:
   build-linux:
-    if: ${{ startsWith(github.event.head_commit.message, 'build:') }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -20,7 +16,7 @@ jobs:
     - name: Clone Main Repository
       uses: actions/checkout@v4
       with:
-          repository: 'h5mcbox/NapCatQQ'
+          repository: 'NapNeko/NapCatQQ'
           submodules: true
           ref: main
           token: ${{ secrets.NAPCAT_BUILD }}
@@ -41,7 +37,6 @@ jobs:
         name: NapCat.${{ matrix.target_platform }}.${{ matrix.target_arch }}
         path: dist
   build-win32:
-    if: ${{ startsWith(github.event.head_commit.message, 'build:') }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -52,7 +47,7 @@ jobs:
         - name: Clone Main Repository
           uses: actions/checkout@v4
           with:
-                repository: 'h5mcbox/NapCatQQ'
+                repository: 'NapNeko/NapCatQQ'
                 submodules: true
                 ref: main
                 token: ${{ secrets.NAPCAT_BUILD }}
