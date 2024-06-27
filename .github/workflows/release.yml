@@ -134,7 +134,6 @@ jobs:
           NapCat.win32.x64.zip
           NapCat.linux.x64.zip
           NapCat.linux.arm64.zip
-          NapCat.win32.ia32.zip
 #          NapCat.darwin.x64.zip
 #          NapCat.darwin.arm64.zip
         draft: true
